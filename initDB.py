@@ -4,7 +4,7 @@ import mysql.connector
 conn = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="!akaliXackerman",
+    password="Yourpassword",
     database="AgroLoan",
     charset='utf8mb4',
     collation='utf8mb4_general_ci'  # This avoids MariaDB conflict
