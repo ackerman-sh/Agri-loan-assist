@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Agro Loan Applications</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 30px auto;
+    }
+
+    .loan-card {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .loan-card:hover {
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    .loan-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+
+    .loan-id {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .loan-status {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.9em;
+      font-weight: 500;
+      color: white;
+    }
+
+    .Approved { background-color: #28a745; }
+    .Rejected { background-color: #dc3545; }
+    .Pending { background-color: #ffc107; color: #000; }
+    .Review { background-color: #007bff; }
+
+    .loan-body p {
+      margin: 8px 0;
+      line-height: 1.6;
+    }
+    header {
+            background-color: #2e7d32;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 32px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .logout {
+            float: right;
+            background: #d32f2f;
+            color: #fff;
+            padding: 10px 16px;
+            border: solid 1px rgb(0, 0, 0) ;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .logout:hover {
+            background: #b71c1c;
+        }
+        .back {
+            float: left;
+            background: #2d5aec;
+            color: #fff;
+            padding: 10px 16px;
+            border: solid 1px rgb(0, 0, 0) ;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .back:hover {
+            background: #2420e6;
+        }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">🌿 <span>AgriLoanAssist</span></div>
+</header>
+<a href="/logout" class="logout">Logout</a>
+<a href="/dashboard" class="back">⬅ Back</a>
+
+
+<div class="container">
+
+  <div class="loan-card">
+    <div class="loan-header">
+      <span class="loan-id">Application ID: AL-2025-00101</span>
+      <span class="loan-status Approved">Approved</span>
+    </div>
+    <div class="loan-body">
+      <p><strong>Farmer Name:</strong> Ramesh Yadav</p>
+      <p><strong>Crop:</strong> Wheat (for Rabi season)</p>
+      <p><strong>Region:</strong> Eastern Uttar Pradesh</p>
+      <p><strong>Loan Amount:</strong> ₹2,50,000</p>
+      <p><strong>Description:</strong> Loan approved under the NABARD Crop Production scheme. Funds will be utilized for land preparation, certified seed procurement, and irrigation. Disbursement scheduled in 2 tranches, post physical field verification.</p>
+    </div>
+  </div>
+
+  <div class="loan-card">
+    <div class="loan-header">
+      <span class="loan-id">Application ID: AL-2025-00102</span>
+      <span class="loan-status Review">Under Review</span>
+    </div>
+    <div class="loan-body">
+      <p><strong>Farmer Name:</strong> Meena Kumari</p>
+      <p><strong>Crop:</strong> Paddy</p>
+      <p><strong>Region:</strong> Gaya District, Bihar</p>
+      <p><strong>Loan Amount:</strong> ₹1,80,000</p>
+      <p><strong>Description:</strong> Application submitted for KCC loan to support paddy cultivation. Awaiting land record validation and credit score analysis. SMS update expected within 24 hours.</p>
+    </div>
+  </div>
+
+  <div class="loan-card">
+    <div class="loan-header">
+      <span class="loan-id">Application ID: AL-2025-00103</span>
+      <span class="loan-status Rejected">Rejected</span>
+    </div>
+    <div class="loan-body">
+      <p><strong>Farmer Name:</strong> Ganesh Patil</p>
+      <p><strong>Crop:</strong> Sugarcane</p>
+      <p><strong>Region:</strong> Kolhapur, Maharashtra</p>
+      <p><strong>Loan Amount:</strong> ₹3,20,000</p>
+      <p><strong>Description:</strong> Application rejected due to insufficient credit history and missing land ownership proof. Advised to reapply with joint ownership documents and alternate guarantor details.</p>
+    </div>
+  </div>
+
+  <div class="loan-card">
+    <div class="loan-header">
+      <span class="loan-id">Application ID: AL-2025-00104</span>
+      <span class="loan-status Pending">Pending Documents</span>
+    </div>
+    <div class="loan-body">
+      <p><strong>Farmer Name:</strong> Kavitha R</p>
+      <p><strong>Crop:</strong> Millets (Bajra & Ragi)</p>
+      <p><strong>Region:</strong> Erode, Tamil Nadu</p>
+      <p><strong>Loan Amount:</strong> ₹1,20,000</p>
+      <p><strong>Description:</strong> Basic application approved but Aadhaar and soil test certificate are pending. Farmer advised to visit the nearest CSC center for assistance and document upload.</p>
+    </div>
+  </div>
+
+  <div class="loan-card">
+    <div class="loan-header">
+      <span class="loan-id">Application ID: AL-2025-00105</span>
+      <span class="loan-status Review">Under Review</span>
+    </div>
+    <div class="loan-body">
+      <p><strong>Farmer Name:</strong> Harjit Singh</p>
+      <p><strong>Crop:</strong> Cotton</p>
+      <p><strong>Region:</strong> Bathinda, Punjab</p>
+      <p><strong>Loan Amount:</strong> ₹2,75,000</p>
+      <p><strong>Description:</strong> High-priority application under mechanized farming initiative. Includes provision for machinery lease and integrated pest management kits. Verification team visit scheduled within 48 hours.</p>
+    </div>
+  </div>
+  <div class="loan-card">
+    <div class="loan-header">
+      <span class="loan-id">Application ID: AL-2025-00106</span>
+      <span class="loan-status Pending">Pending Documents</span>
+    </div>
+    <div class="loan-body">
+      <p><strong>Farmer Name:</strong> Suresh Kumar</p>
+      <p><strong>Crop:</strong> Wheat</p>
+      <p><strong>Region:</strong> Jaipur, Rajasthan</p>
+      <p><strong>Loan Amount:</strong> ₹1,50,000</p>
+      <p><strong>Description:</strong> Application for Rabi crop season pending soil test report. Farmer needs to submit pesticide usage records for approval.</p>
+    </div>
+  </div>
+  
+  <div class="loan-card">
+    <div class="loan-header">
+      <span class="loan-id">Application ID: AL-2025-00107</span>
+      <span class="loan-status Approved">Loan Approved</span>
+    </div>
+    <div class="loan-body">
+      <p><strong>Farmer Name:</strong> Nandini Sharma</p>
+      <p><strong>Crop:</strong> Rice</p>
+      <p><strong>Region:</strong> Allahabad, Uttar Pradesh</p>
+      <p><strong>Loan Amount:</strong> ₹3,00,000</p>
+      <p><strong>Description:</strong> Approved for advanced irrigation setup and high-quality seeds for Kharif season. Fund transfer pending.</p>
+    </div>
+  </div>
+  
+  <div class="loan-card">
+    <div class="loan-header">
+      <span class="loan-id">Application ID: AL-2025-00108</span>
+      <span class="loan-status Review">Under Review</span>
+    </div>
+    <div class="loan-body">
+      <p><strong>Farmer Name:</strong> Rajendra Prasad</p>
+      <p><strong>Crop:</strong> Sugarcane</p>
+      <p><strong>Region:</strong> Belgaum, Karnataka</p>
+      <p><strong>Loan Amount:</strong> ₹5,50,000</p>
+      <p><strong>Description:</strong> Loan under review for equipment purchase and land expansion. Verification officer scheduled for site visit within a week.</p>
+    </div>
+  </div>
+  
+  <div class="loan-card">
+    <div class="loan-header">
+      <span class="loan-id">Application ID: AL-2025-00109</span>
+      <span class="loan-status Pending">Pending Documents</span>
+    </div>
+    <div class="loan-body">
+      <p><strong>Farmer Name:</strong> Mohan Lal</p>
+      <p><strong>Crop:</strong> Barley</p>
+      <p><strong>Region:</strong> Bikaner, Rajasthan</p>
+      <p><strong>Loan Amount:</strong> ₹80,000</p>
+      <p><strong>Description:</strong> Awaiting document verification. Farmer needs to provide KYC documents and land ownership proof.</p>
+    </div>
+  </div>
+  
+  <div class="loan-card">
+    <div class="loan-header">
+      <span class="loan-id">Application ID: AL-2025-00110</span>
+      <span class="loan-status Approved">Loan Approved</span>
+    </div>
+    <div class="loan-body">
+      <p><strong>Farmer Name:</strong> Geeta Devi</p>
+      <p><strong>Crop:</strong> Maize</p>
+      <p><strong>Region:</strong> Gaya, Bihar</p>
+      <p><strong>Loan Amount:</strong> ₹2,00,000</p>
+      <p><strong>Description:</strong> Loan approved for setting up rainwater harvesting system and purchasing seeds. Payment to be processed in next 2 business days.</p>
+    </div>
+  </div>
+  
+  <div class="loan-card">
+    <div class="loan-header">
+      <span class="loan-id">Application ID: AL-2025-00111</span>
+      <span class="loan-status Pending">Pending Documents</span>
+    </div>
+    <div class="loan-body">
+      <p><strong>Farmer Name:</strong> Ravi Teja</p>
+      <p><strong>Crop:</strong> Groundnut</p>
+      <p><strong>Region:</strong> Anantapur, Andhra Pradesh</p>
+      <p><strong>Loan Amount:</strong> ₹90,000</p>
+      <p><strong>Description:</strong> Loan pending due to incomplete land title documentation. Farmer advised to update the land records.</p>
+    </div>
+  </div>
+  
+  <div class="loan-card">
+    <div class="loan-header">
+      <span class="loan-id">Application ID: AL-2025-00112</span>
+      <span class="loan-status Review">Under Review</span>
+    </div>
+    <div class="loan-body">
+      <p><strong>Farmer Name:</strong> Sunil Yadav</p>
+      <p><strong>Crop:</strong> Jowar</p>
+      <p><strong>Region:</strong> Solapur, Maharashtra</p>
+      <p><strong>Loan Amount:</strong> ₹1,75,000</p>
+      <p><strong>Description:</strong> Loan under review for crop insurance and weather-resistant farming equipment. Verification scheduled within 72 hours.</p>
+    </div>
+  </div>
+  
+  <div class="loan-card">
+    <div class="loan-header">
+      <span class="loan-id">Application ID: AL-2025-00113</span>
+      <span class="loan-status Approved">Loan Approved</span>
+    </div>
+    <div class="loan-body">
+      <p><strong>Farmer Name:</strong> Priya Patil</p>
+      <p><strong>Crop:</strong> Grapes</p>
+      <p><strong>Region:</strong> Nashik, Maharashtra</p>
+      <p><strong>Loan Amount:</strong> ₹3,50,000</p>
+      <p><strong>Description:</strong> Loan approved for drip irrigation system installation and vineyard expansion. Awaiting final payment release.</p>
+    </div>
+  </div>
+  
+  <div class="loan-card">
+    <div class="loan-header">
+      <span class="loan-id">Application ID: AL-2025-00114</span>
+      <span class="loan-status Pending">Pending Documents</span>
+    </div>
+    <div class="loan-body">
+      <p><strong>Farmer Name:</strong> Neelam Singh</p>
+      <p><strong>Crop:</strong> Apple</p>
+      <p><strong>Region:</strong> Shimla, Himachal Pradesh</p>
+      <p><strong>Loan Amount:</strong> ₹4,00,000</p>
+      <p><strong>Description:</strong> Pending documents for apple orchard expansion. Waiting for the environmental clearance and subsidy approval.</p>
+    </div>
+  </div>
+  
+
+</div>
+
+</body>
+</html>

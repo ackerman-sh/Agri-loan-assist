@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Farmer Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f5f9f6;
+            margin: 0;
+            padding: 0;
+        }
+        .dashboard-container {
+            max-width: 900px;
+            max-height: 1000vh;
+            margin: 60px auto;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            border: solid 1px black;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+        p.status {
+            color: #388e3c;
+            font-weight: bold;
+        }
+        .section {
+            margin-top: 30px;
+        }
+        .section h3 {
+            color: #388e3c;
+            margin-bottom: 10px;
+        }
+        .section p {
+            color: #333;
+        }
+        .logout {
+            float: right;
+            background: #d32f2f;
+            color: #fff;
+            padding: 10px 16px;
+            border: solid 1px rgb(0, 0, 0) ;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .logout:hover {
+            background: #b71c1c;
+        }
+
+                      /* Section container */
+        .section {
+            background: #f9f9f9;
+            border-left: 4px solid #4CAF50;
+            padding: 20px;
+            margin-left: 40px ;
+            margin-top: 60px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+        }
+
+
+        /* Headings */
+        .section h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        /* Paragraphs */
+        .section p {
+            margin: 10px 0 20px;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        /* Labels and Inputs */
+        .section label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .section input[type="text"],
+        .section input[type="number"],
+        .section textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+
+        /* Textarea specific */
+        .section textarea {
+            resize: vertical;
+        }
+
+        /* Buttons */
+        .section button,
+        .section .btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            text-decoration: none; /* For .btn links */
+            display: inline-block;
+        }
+
+        .section button:hover,
+        .section .btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Loan Status List */
+        .section ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 10px;
+        }
+
+        .section ul li {
+            padding: 6px 0;
+            border-bottom: 1px dashed #ccc;
+            font-size: 0.95rem;
+        }
+
+        .section ul li:last-child {
+            border-bottom: none;
+        }
+        header {
+            background-color: #2e7d32;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 32px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+        .back {
+            float: left;
+            background: #2d5aec;
+            color: #fff;
+            padding: 10px 16px;
+            border: solid 1px rgb(0, 0, 0) ;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .back:hover {
+            background: #2420e6;
+        }
+     
+                 
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">🌿 <span>AgriLoanAssist</span></div>
+    </header>
+    <a href="/logout" class="logout">Logout</a>
+    <a href="/dashboard" class="back">⬅ Back</a>
+
+    <div class="section">
+        <h3>🚜 Agro Loan Guidance</h3>
+    
+        <ol style="line-height: 30px;">
+            {% for item in analysis_results %}
+              <li>{{ item }}</li>
+            {% endfor %}
+          </ol>
+          
+
+    </div>
+</body>
+</html>

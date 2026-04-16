@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Farmer Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f5f9f6;
+            margin: 0;
+            padding: 0;
+        }
+        .dashboard-container {
+            max-width: 900px;
+            max-height: 1000vh;
+            margin: 60px auto;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            border: solid 1px black;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+        p.status {
+            color: #388e3c;
+            font-weight: bold;
+        }
+        .section {
+            margin-top: 30px;
+        }
+        .section h3 {
+            color: #388e3c;
+            margin-bottom: 10px;
+        }
+        .section p {
+            color: #333;
+        }
+        .logout {
+            float: right;
+            background: #d32f2f;
+            color: #fff;
+            padding: 10px 16px;
+            border: solid 1px rgb(0, 0, 0) ;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .logout:hover {
+            background: #b71c1c;
+        }
+        /* Profile Button */
+        .profile-btn {
+            float: left;
+            top: 20px;
+            right: 20px;
+            background-color: #6fbbd4;
+            color: black;
+            font-weight: bold;
+            border: solid 1px rgb(0, 0, 0) ;
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            border-radius: 4px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+
+        /* Overlay Background */
+        .profile-overlay {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100%;
+            background-color: #f9f9f9;
+            box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+            transition: right 0.3s ease-in-out;
+            z-index: 999;
+        }
+
+        /* Show the overlay */
+        .profile-overlay.active {
+            right: 0;
+        }
+
+        /* Profile Card Content */
+        .profile-card {
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .profile-card h2 {
+            margin-top: 0;
+        }
+
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        header {
+            background-color: #2e7d32;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 32px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+     
+                    /* Section container */
+        .section {
+            background: #f9f9f9;
+            border-left: 4px solid #4CAF50;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Headings */
+        .section h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        /* Paragraphs */
+        .section p {
+            margin: 10px 0 20px;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        /* Labels and Inputs */
+        .section label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .section input[type="text"],
+        .section input[type="number"],
+        .section textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+
+        /* Textarea specific */
+        .section textarea {
+            resize: vertical;
+        }
+
+        /* Buttons */
+        .section button,
+        .section .btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            text-decoration: none; /* For .btn links */
+            display: inline-block;
+        }
+
+        .section button:hover,
+        .section .btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Loan Status List */
+        .section ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 10px;
+        }
+
+        .section ul li {
+            padding: 6px 0;
+            border-bottom: 1px dashed #ccc;
+            font-size: 0.95rem;
+        }
+
+        .section ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* Responsive Enhancement */
+        @media screen and (max-width: 600px) {
+            .section input, .section textarea, .section button {
+                font-size: 1rem;
+            }
+        }
+        /* Base select styling */
+        select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: white;
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 15px;
+            transition: border-color 0.3s ease;
+            appearance: none; /* removes default arrow styling in some browsers */
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20fill='%23666'%20height='24'%20viewBox='0%200%2024%2024'%20width='24'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20d='M7%2010l5%205%205-5z'/%3E%3Cpath%20d='M0%200h24v24H0z'%20fill='none'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 20px;
+        }
+
+        /* On focus */
+        select:focus {
+            border-color: #1a73e8;
+            outline: none;
+            box-shadow: 0 0 4px rgba(26, 115, 232, 0.4);
+        }
+
+        /* Style the dropdown options (optional, browser-dependent) */
+        option {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        form label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        form input,
+        form textarea,
+        form select {
+            box-sizing: border-box;
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">🌿 <span>AgriLoanAssist</span></div>
+    </header>
+    
+
+    <!-- Profile Overlay -->
+     
+    <div id="profileOverlay" class="profile-overlay">
+        <div class="profile-card">
+            <button id="closeProfile" class="close-btn">✖</button>
+            <h2>{{ farmer.name }}</h2>
+            <p><strong>Mobile:</strong> {{ session.mobile }}</p>
+            <p><strong>Location:</strong> {{ farmer.location }}</p>
+            <p><strong>Land Area:</strong> {{ farmer.land_area }}</p>
+            <p><strong>Crop:</strong> {{ farmer.crop }}</p>
+            <p><strong>Joined:</strong> {{ farmer.created_at.strftime("%Y-%m-%d") }}</p>
+        </div>
+    </div>
+    <button id="profileBtn" class="profile-btn">👤 Profile</button>
+    <a href="/logout" class="logout">Logout</a>
+
+
+    <div class="dashboard-container">
+        
+        
+        <center><h1>Welcome, {{farmer.name}}!</h1></center>
+        
+
+        
+
+        <div class="section">
+            <h3>🚜 Agro Loan Guidance</h3>
+            <p>Answer a few questions to get personalized loan scheme recommendations.</p>
+            <form method="POST" action="/loan-guidance">
+                
+                <label for="crop">1. What crop are you planning to grow?</label>
+                <input type="text" name="crop" id="crop" placeholder="e.g., Paddy, Sugarcane" required>
+        
+                <label for="land">2. How much land do you own (in acres)?</label>
+                <input type="number" name="land" id="land" step="0.1" placeholder="e.g., 2.5" required>
+        
+                <label for="region">3. Which state or region are you from?</label>
+                <input type="text" name="region" id="region" placeholder="e.g., Tamil Nadu" required>
+        
+                <label for="loanPurpose">4. What is the purpose of this loan?</label>
+                <select name="loanPurpose" id="loanPurpose" required>
+                    <option value="">-- Select Purpose --</option>
+                    <option value="seeds">Buy seeds and fertilizers</option>
+                    <option value="equipment">Purchase farming equipment</option>
+                    <option value="irrigation">Set up irrigation</option>
+                    <option value="expansion">Expand land or livestock</option>
+                    <option value="debt_repay">Repay existing agricultural loans</option>
+                </select>
+        
+                <label for="loanAmount">5. What is the expected loan amount (in ₹)?</label>
+                <select name="loanAmount" id="loanAmount" required>
+                    <option value="">-- Select Loan Amount --</option>
+                    <option value="10000">₹10,000</option>
+                    <option value="50000">₹50,000</option>
+                    <option value="150000">₹1,50,000</option>
+                    <option value="500000">₹5,00,000</option>
+                    <option value="1000000">₹10,00,000</option>
+                </select>
+                
+
+        
+                <label for="experience">6. How many years of farming experience do you have?</label>
+                <select name="experience" id="experience" required>
+                    <option value="">-- Select Experience --</option>
+                    <option value="0-1">0-1 years</option>
+                    <option value="2-5">2-5 years</option>
+                    <option value="6-10">6-10 years</option>
+                    <option value="10+">10+ years</option>
+
+                </select>
+        
+                <label for="existingLoan">7. Do you currently have any agricultural loan?</label>
+                <select name="existingLoan" id="existingLoan" required>
+                    <option value="">-- Select --</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+        
+                <button type="submit">Get Guidance</button>
+            </form>
+        </div>
+        
+        
+        <div class="section">
+            <h3>❓ Ask a Question</h3>
+            <p>Need help with loan types or application steps? Post your query anytime.</p>
+            <form method="POST" action="/ask-question">
+                <textarea name="question" rows="3" placeholder="Type your question here..." required></textarea>
+                <button type="submit">Submit Query</button>
+            </form>
+        </div>
+        
+        <div class="section">
+            <h3>📊 Loan Status & Updates</h3>
+            <p>Track your loan application or get alerts on new financial aids.</p>
+            <ul>
+                <li><strong>Application ID:</strong> #AL-2025-00214</li>
+                <li><strong>Status:</strong> Under Review</li>
+                <li><strong>Next Update:</strong> SMS within 2 days</li>
+            </ul>
+            <a href="/loans_applicable" class="btn">View Applicable Loans</a>
+        </div>
+        
+    </div>
+    <script>
+        const profileBtn = document.getElementById("profileBtn");
+        const profileOverlay = document.getElementById("profileOverlay");
+        const closeProfile = document.getElementById("closeProfile");
+
+        profileBtn.addEventListener("click", function () {
+            profileOverlay.classList.add("active");
+            profileBtn.style.display = "none";  // Hide the button completely
+        });
+
+        closeProfile.addEventListener("click", function () {
+            profileOverlay.classList.remove("active");
+            profileBtn.style.display = "block"; // Show it again
+        });
+
+
+    </script>
+
+</body>
+</html>

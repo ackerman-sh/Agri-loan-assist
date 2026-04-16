@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - AgriLoanAssist</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: rgb(226, 222, 222);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-container {
+      background-color: white;
+      border: solid 1px black;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      width: 320px;
+    }
+    h2 {
+      text-align: center;
+      color: #2e7d32;
+      margin-bottom: 25px;
+    }
+    header {
+            background-color: #2e7d32;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-right: -100px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            width: 330px;
+            height: 40px;
+            }
+
+
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1b5e20;
+    }
+    .switch-link, .error-message {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    .switch-link a {
+      color: #2e7d32;
+      text-decoration: none;
+    }
+    .switch-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+    
+    <div class="login-container">
+        <header>
+            <div class="logo">🌿 <span>AgriLoanAssist</span></div>
+        </header>
+      <h2>👨‍🌾 Farmer Login</h2>
+  
+      <form action="/login" method="post" autocomplete="off">
+        <label for="mobile">Mobile Number</label>
+        <input
+          type="text"
+          id="mobile"
+          name="mobile"
+          placeholder="Enter your mobile number"
+          required
+        />
+  
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter your password"
+          required
+        />
+
+        {% if error %}
+        <div class="error-message" style="color: red; margin-bottom: 10px; ">
+          {{ error }}
+        </div>
+      {% endif %}
+  
+        <button type="submit">Login</button>
+      </form>
+  
+      <div class="switch-link">
+        Don’t have an account? <a href="/register">Register here</a>
+      </div>
+    </div>
+  </body>
+  
+</html>
