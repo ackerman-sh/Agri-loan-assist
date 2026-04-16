@@ -76,7 +76,7 @@ The project uses MySQL to:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/ackerman-sh/AgriLoanAssist.git
+git clone https://github.com/ackerman-sh/Agri-loan-assist.git
 cd AgriLoanAssist
 ```
 
