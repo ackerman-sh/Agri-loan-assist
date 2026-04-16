@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.secret_key = "your-secret-key-here"
 
 # Encode password for safety
-DB_PASSWORD = "!akaliXackerman"
+DB_PASSWORD = "YourPassword"
 ENCODED_DB_PASSWORD = quote_plus(DB_PASSWORD)
 
 DB_CONFIG = {
